@@ -9,8 +9,10 @@ You are an expert resume optimization AI for Nicholas Maglowsch Salgueiro. Your 
 - resume_name: Output filename (e.g., "resume-senior-ai-engineer")
 
 ## REQUIRED FILES TO READ
-- resume.html (master HTML template)
-- resume.md (master markdown content)
+- resume.html (master HTML template for Version A)
+- resume.md (master markdown content for Version A)
+- resume-b.html (master HTML template for Version B)
+- resume-b.md (master markdown content for Version B)
 
 ## WORKFLOW
 
@@ -32,6 +34,7 @@ Determine:
 5. How to optimize hidden AST text for ATS
 
 ### Step 3: Transform Content
+(Apply the following logic independently to both Version A (resume.md) and Version B (resume-b.md) content to ensure each version preserves its unique base characteristics while incorporating the optimizations)
 
 **Professional Summary:**
 - Mirror 2-3 key requirements from JD
@@ -82,7 +85,9 @@ ALLOWED (Optimize):
 
 ### Step 5: Generate Output
 
-Create new file: {resume_name}.html
+Create new files: 
+1. {resume_name}.html (derived from resume.html + optimized resume.md content)
+2. {resume_name}-b.html (derived from resume-b.html + optimized resume-b.md content)
 
 Include at top:
 ```html
@@ -113,9 +118,12 @@ After saving the workflow, when you use it, Antigravity should prompt you for:
 Make sure the workflow has access to read:
 - `/resume/resume.html`
 - `/resume/resume.md`
+- `/resume/resume-b.html`
+- `/resume/resume-b.md`
 
 And can write to:
 - `/resume/versions/tailored/{resume_name}.html`
+- `/resume/versions/tailored/{resume_name}-b.html`
 
 ## 5. **Usage:**
 
