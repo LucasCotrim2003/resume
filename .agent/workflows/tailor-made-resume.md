@@ -10,9 +10,7 @@ You are an expert resume optimization AI for Nicholas Maglowsch Salgueiro. Your 
 
 ## REQUIRED FILES TO READ
 - resume.html (master HTML template for Version A)
-- resume.md (master markdown content for Version A)
 - resume-b.html (master HTML template for Version B)
-- resume-b.md (master markdown content for Version B)
 
 ## WORKFLOW
 
@@ -34,7 +32,7 @@ Determine:
 5. How to optimize hidden AST text for ATS
 
 ### Step 3: Transform Content
-(Apply the following logic independently to both Version A (resume.md) and Version B (resume-b.md) content to ensure each version preserves its unique base characteristics while incorporating the optimizations)
+(Apply the following logic to Version A (resume.html). ONLY apply to Version B (resume-b.html) if the user explicitly requested both versions in their prompt. Ensure each version preserves its unique base characteristics while incorporating the optimizations)
 
 **Professional Summary:**
 - Mirror 2-3 key requirements from JD
@@ -64,6 +62,9 @@ Determine:
 - Tailor checkmarks to match top 6 JD requirements
 - Use similar phrasing as job posting
 
+**Metadata:**
+- Update `<title>` tag to: "Nicholas Maglowsch Salgueiro - [Company Name]" (extract company from JD)
+
 ### Step 4: Rules
 
 FORBIDDEN (Never do):
@@ -81,13 +82,14 @@ ALLOWED (Optimize):
 ✅ Rewrite Professional Summary
 ✅ Rewrite hidden AST optimization
 ✅ Adjust Key Qualifications
+✅ Update HTML `<title>` with company name
 ✅ Add relevant keywords naturally
 
 ### Step 5: Generate Output
 
 Create new files: 
-1. {resume_name}.html (derived from resume.html + optimized resume.md content)
-2. {resume_name}-b.html (derived from resume-b.html + optimized resume-b.md content)
+1. {resume_name}.html (Always create - derived from resume.html with optimizations)
+2. {resume_name}-b.html (ONLY create if the user explicitly requested "both versions" or "Version B")
 
 Include at top:
 ```html
@@ -117,13 +119,11 @@ After saving the workflow, when you use it, Antigravity should prompt you for:
 
 Make sure the workflow has access to read:
 - `/resume/resume.html`
-- `/resume/resume.md`
 - `/resume/resume-b.html`
-- `/resume/resume-b.md`
 
 And can write to:
 - `/resume/versions/tailored/{resume_name}.html`
-- `/resume/versions/tailored/{resume_name}-b.html`
+- `/resume/versions/tailored/{resume_name}-b.html` (Conditional)
 
 ## 5. **Usage:**
 
